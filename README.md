@@ -1,4 +1,4 @@
-# lotery_flutter
+# lottery_flutter
 
 A new Flutter project.
 
