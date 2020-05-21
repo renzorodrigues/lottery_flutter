@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:lotery_flutter/models/federal_lottery_model.dart';
+import 'package:intl/intl.dart';
+import 'package:lotery_flutter/models/federal_model.dart';
 import 'package:lotery_flutter/models/lottery_type_enum.dart';
 import 'package:lotery_flutter/routes/lottery_route.dart';
-import 'package:lotery_flutter/stores/home_store.dart';
+import 'package:lotery_flutter/stores/home_stores/home_store.dart';
+import 'package:lotery_flutter/stores/home_stores/lotteries_store.dart';
+import 'package:lotery_flutter/utils/util.dart';
 import 'package:lotery_flutter/widgets/home_widgets/federal_result_widget.dart';
 import 'default_result_widget.dart';
 import 'duplasena_result_widget.dart';
 
 class LotteryExpansionWidget extends StatelessWidget {
+  final LotteryRoute route = LotteryRoute();
+  final HomeStore homeStore = HomeStore();
+  final Util util = Util();
+  final LotteriesStore store;
+
   final double height;
   final String lotteryIcon;
   final String lotteryName;
   final String contestNumber;
+  final int winnersNumbers;
+  final String award;
   final String nextEstimate;
   final Color backgroundColor;
   final Color color;
@@ -22,15 +32,18 @@ class LotteryExpansionWidget extends StatelessWidget {
   final bool rowLimited;
   final bool defaultLottery;
   final LotteryTypeEnum lotteryType;
-  final List<FederalLotteryModel> federalList;
-
-  final LotteryRoute route = LotteryRoute();
+  final List<Map<String, dynamic>> federalList;
+  final DateTime date;
+  final DateTime nextContestDate;
 
   LotteryExpansionWidget({
+    this.store,
     this.height,
     this.lotteryIcon,
     this.lotteryName,
     this.contestNumber,
+    this.winnersNumbers,
+    this.award,
     this.nextEstimate,
     this.backgroundColor = Colors.grey,
     this.color = Colors.grey,
@@ -41,6 +54,8 @@ class LotteryExpansionWidget extends StatelessWidget {
     this.defaultLottery = true,
     this.lotteryType,
     this.federalList,
+    this.date,
+    this.nextContestDate,
   });
 
   Widget _lotteryType(LotteryTypeEnum lotteryType) {
@@ -59,6 +74,7 @@ class LotteryExpansionWidget extends StatelessWidget {
         break;
       default:
         return DefaultResultWidget(
+          store: store,
           lotteryNumbers: this.lotteryNumbers,
           rowLimited: this.rowLimited,
           color: this.color,
@@ -66,26 +82,24 @@ class LotteryExpansionWidget extends StatelessWidget {
     }
   }
 
-  final HomeStore control = HomeStore();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: control.changeExpanded,
+      onTap: homeStore.changeExpanded,
       child: Observer(builder: (_) {
         return AnimatedContainer(
           width: double.infinity,
-          height: this.control.isExpanded ? this.height ?? 275 : 50,
+          height: this.homeStore.isExpanded ? this.height ?? 290 : 50,
           decoration: BoxDecoration(
-            color: this.backgroundColor,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(30))
-          ),
+              color: this.backgroundColor,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(30))),
           duration: Duration(milliseconds: 300),
           child: Wrap(
             alignment: WrapAlignment.center,
             children: <Widget>[
               Container(
                 width: double.infinity,
-                padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                padding: EdgeInsets.only(top: 10, left: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -108,7 +122,7 @@ class LotteryExpansionWidget extends StatelessWidget {
                     ),
                     Container(
                       padding: EdgeInsets.only(right: 10),
-                      child: control.isExpanded
+                      child: homeStore.isExpanded
                           ? Icon(
                               Icons.keyboard_arrow_down,
                               color: Colors.black38,
@@ -123,7 +137,6 @@ class LotteryExpansionWidget extends StatelessWidget {
               ),
               _lotteryType(this.lotteryType),
               Container(
-                padding: EdgeInsets.all(10),
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,7 +147,11 @@ class LotteryExpansionWidget extends StatelessWidget {
                               padding: EdgeInsets.all(5),
                               margin: EdgeInsets.all(2),
                               child: Text(
-                                'ACUMULOU!',
+                                (this.winnersNumbers > 0
+                                    ? (this.winnersNumbers == 1
+                                        ? '1 GANHADOR ${util.currencyFormat(this.award)}'
+                                        : '${this.winnersNumbers} GANHADORES ${util.currencyFormat(this.award)}')
+                                    : 'ACUMULOU!'),
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -147,8 +164,8 @@ class LotteryExpansionWidget extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         color: Colors.white54,
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.all(2),
+                        padding: EdgeInsets.all(3),
+                        margin: EdgeInsets.only(left: 5, right: 5),
                         child: Row(children: <Widget>[
                           Container(
                             child: Text(
@@ -160,9 +177,9 @@ class LotteryExpansionWidget extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 2),
                             child: Text(
-                              '12/05/2020',
+                              DateFormat('dd/MM/yyyy').format(this.date),
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -175,8 +192,8 @@ class LotteryExpansionWidget extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         color: Colors.white54,
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.all(2),
+                        padding: EdgeInsets.all(3),
+                        margin: EdgeInsets.only(left: 5, right: 5),
                         child: Row(children: <Widget>[
                           Container(
                             child: Text(
@@ -188,9 +205,66 @@ class LotteryExpansionWidget extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 10),
+                            padding: EdgeInsets.only(left: 2),
                             child: Text(
                               this.contestNumber,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ]),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        color: Colors.white54,
+                        padding: EdgeInsets.all(3),
+                        margin: EdgeInsets.only(top: 5, left: 5, right: 5),
+                        child: Row(children: <Widget>[
+                          Container(
+                            child: Text(
+                              'PRÓXIMO SORTEIO:',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 2),
+                            child: Text(
+                              this.nextContestDate != null ? DateFormat('dd/MM/yyyy')
+                                  .format(this.nextContestDate) : DateTime.now().toString(),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ]),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        color: Colors.white54,
+                        padding: EdgeInsets.all(3),
+                        margin: EdgeInsets.only(left: 5, right: 5),
+                        child: Row(children: <Widget>[
+                          Container(
+                            child: Text(
+                              'PRÊMIO ESTIMADO:',
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 2),
+                            child: Text(
+                              util.currencyFormat(this.nextEstimate),
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -211,11 +285,12 @@ class LotteryExpansionWidget extends StatelessWidget {
                             child: Text(
                               'CONFIRA O RESULTADO',
                               style: TextStyle(
+                                color: Colors.white70,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 12,
                               ),
                             ),
-                            color: Colors.amber,
+                            color: this.color,
                           )),
                     ],
                   ),

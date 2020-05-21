@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 class WinningNumberWidget extends StatelessWidget {
   final String number;
   final Color color;
-  WinningNumberWidget({this.number, this.color = Colors.grey});
+  final bool border;
+
+  WinningNumberWidget(
+      {this.number, this.color = Colors.grey, this.border = false});
+
+  _isBordered() {
+    return this.border ? Border.all(color: Colors.yellow, width: 3) : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,6 +22,7 @@ class WinningNumberWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: this.color,
         borderRadius: BorderRadius.all(Radius.circular(50)),
+        border: _isBordered(),
       ),
       child: Text(
         this.number,

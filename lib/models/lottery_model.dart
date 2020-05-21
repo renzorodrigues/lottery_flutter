@@ -1,9 +1,11 @@
-import 'package:lotery_flutter/models/federal_lottery_model.dart';
+//import 'package:lotery_flutter/models/federal_lottery_model.dart';
 
 class LotteryModel {
   String _contestNumber;
   DateTime _contestDate;
   String _prizeAmount;
+  String _lotteryName;
+  String _date;
   List<String> _megaSenaNumbers = ['11', '34', '37', '49', '51', '58'];
   List<String> _quinaNumbers = ['17', '23', '26', '34', '73'];
   List<String> _timeManiaNumbers = ['12', '18', '24', '28', '34', '60', '67'];
@@ -13,33 +15,39 @@ class LotteryModel {
   List<String> _duplaSenaFirstNumbers = ['03','09','12','15','25'];
   List<String> _duplaSenaSecondNumbers = ['10','20','30','40','50'];
 
-  List<FederalLotteryModel> federalList = [
-    FederalLotteryModel(
-      destino: 1,
-      bilhete: '050411',
-      valorPremio: 500000.00,
-    ),
-    FederalLotteryModel(
-      destino: 2,
-      bilhete: '064624',
-      valorPremio: 27000.00,
-    ),
-    FederalLotteryModel(
-      destino: 3,
-      bilhete: '092652',
-      valorPremio: 24000.00,
-    ),
-    FederalLotteryModel(
-      destino: 4,
-      bilhete: '044129',
-      valorPremio: 19000.00,
-    ),
-    FederalLotteryModel(
-      destino: 5,
-      bilhete: '078488',
-      valorPremio: 18000.00,
-    )
-  ];
+  // List<FederalLotteryModel> federalList = [
+  //   FederalLotteryModel(
+  //     destino: 1,
+  //     bilhete: '050411',
+  //     valorPremio: 500000.00,
+  //   ),
+  //   FederalLotteryModel(
+  //     destino: 2,
+  //     bilhete: '064624',
+  //     valorPremio: 27000.00,
+  //   ),
+  //   FederalLotteryModel(
+  //     destino: 3,
+  //     bilhete: '092652',
+  //     valorPremio: 24000.00,
+  //   ),
+  //   FederalLotteryModel(
+  //     destino: 4,
+  //     bilhete: '044129',
+  //     valorPremio: 19000.00,
+  //   ),
+  //   FederalLotteryModel(
+  //     destino: 5,
+  //     bilhete: '078488',
+  //     valorPremio: 18000.00,
+  //   )
+  // ];
+
+  String get getLotteryName => _lotteryName;
+  set setLotteryName(String name) => _lotteryName = name;
+
+  String get getDate => _date;
+  set setDate(String date) => _date = date;
 
   String get contestNumber => _contestNumber;
   DateTime get contestDate => _contestDate;

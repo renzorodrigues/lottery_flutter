@@ -16,22 +16,40 @@ class HeaderWidget extends StatelessWidget {
               alignment: Alignment.center,
               width: 80,
               height: 80,
-              color: Colors.blue,
-              child: Text('opa1'),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.blue[100],
+              ),
+              child: FlutterLogo(
+                colors: Colors.blue,
+                size: 50,
+              ),
             ),
             Container(
               alignment: Alignment.center,
               width: 80,
               height: 80,
-              color: Colors.blue,
-              child: Text('opa1'),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.blue[100],
+              ),
+              child: FlutterLogo(
+                colors: Colors.blue,
+                size: 50,
+              ),
             ),
             Container(
               alignment: Alignment.center,
               width: 80,
               height: 80,
-              color: Colors.blue,
-              child: Text('opa1'),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.blue[100],
+              ),
+              child: FlutterLogo(
+                colors: Colors.blue,
+                size: 50,
+              ),
             ),
           ],
         ),

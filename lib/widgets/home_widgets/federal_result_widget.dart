@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:lotery_flutter/models/federal_lottery_model.dart';
+import 'package:lotery_flutter/models/federal_model.dart';
 
 class FederalResultWidget extends StatelessWidget {
-  final List<FederalLotteryModel> federalList;
+  final String contestNumber;
+  final DateTime contasteDate;
+  final List<Map<String, dynamic>> federalList;
 
   FederalResultWidget({
+    this.contestNumber,
+    this.contasteDate,
     this.federalList = const [],
   });
+
+  int _checkIndex(){
+    if (key == 'premio1'){
+      return 1;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +65,7 @@ class FederalResultWidget extends StatelessWidget {
             ],
           ),
           ...federalList.map((premio) {
-            var color =
-                (premio.destino % 2 == 0) ? Colors.white10 : Colors.white30;
+            var color = Colors.white10;
             return Wrap(
               children: <Widget>[
                 Container(
@@ -64,7 +73,8 @@ class FederalResultWidget extends StatelessWidget {
                   width: 80,
                   color: color,
                   child: Text(
-                    '${premio.destino.toString()}º',
+                    '1º',
+                    //'${premio.destino.toString()}º',
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
@@ -76,7 +86,8 @@ class FederalResultWidget extends StatelessWidget {
                   width: 100,
                   color: color,
                   child: Text(
-                    premio.bilhete,
+                    'bilhete',
+                    //premio.bilhete,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
@@ -88,7 +99,8 @@ class FederalResultWidget extends StatelessWidget {
                   width: 120,
                   color: color,
                   child: Text(
-                    premio.valorPremio.toStringAsFixed(2),
+                    'valor premio',
+                    //premio.valorPremio.toStringAsFixed(2),
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
