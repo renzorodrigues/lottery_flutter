@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:intl/intl.dart';
-import 'package:lotery_flutter/models/federal_model.dart';
-import 'package:lotery_flutter/models/lottery_type_enum.dart';
-import 'package:lotery_flutter/routes/lottery_route.dart';
-import 'package:lotery_flutter/stores/home_stores/home_store.dart';
-import 'package:lotery_flutter/stores/home_stores/lotteries_store.dart';
-import 'package:lotery_flutter/utils/util.dart';
-import 'package:lotery_flutter/widgets/home_widgets/federal_result_widget.dart';
+import 'package:lotery_flutter/app/models/lottery_type_enum.dart';
+import 'package:lotery_flutter/app/routes/lottery_route.dart';
+import 'package:lotery_flutter/app/screens/home/stores/home_store.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/utils/util.dart';
 import 'default_result_widget.dart';
 import 'duplasena_result_widget.dart';
+import 'federal_result_widget.dart';
 
 class LotteryExpansionWidget extends StatelessWidget {
   final LotteryRoute route = LotteryRoute();

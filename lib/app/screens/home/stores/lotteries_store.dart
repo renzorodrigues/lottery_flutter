@@ -1,11 +1,11 @@
-import 'package:lotery_flutter/models/duplasena_model.dart';
-import 'package:lotery_flutter/models/federal_model.dart';
-import 'package:lotery_flutter/models/lotofacil_model.dart';
-import 'package:lotery_flutter/models/lotomania_model.dart';
-import 'package:lotery_flutter/models/megasena_model.dart';
-import 'package:lotery_flutter/controllers/lottery_controller.dart';
-import 'package:lotery_flutter/models/quina_model.dart';
-import 'package:lotery_flutter/models/timemania_model.dart';
+import 'package:lotery_flutter/app/controllers/lottery_controller.dart';
+import 'package:lotery_flutter/app/models/duplasena_model.dart';
+import 'package:lotery_flutter/app/models/federal_model.dart';
+import 'package:lotery_flutter/app/models/lotofacil_model.dart';
+import 'package:lotery_flutter/app/models/lotomania_model.dart';
+import 'package:lotery_flutter/app/models/megasena_model.dart';
+import 'package:lotery_flutter/app/models/quina_model.dart';
+import 'package:lotery_flutter/app/models/timemania_model.dart';
 import 'package:mobx/mobx.dart';
 part 'lotteries_store.g.dart';
 

@@ -1,6 +1,6 @@
-import 'package:lotery_flutter/utils/customFormatDate.dart';
+import 'package:lotery_flutter/app/utils/customFormatDate.dart';
 
-class LotofacilModel {
+class LotomaniaModel {
   String concurso;
   DateTime data;
   String resultado;
@@ -9,7 +9,7 @@ class LotofacilModel {
   String premioEstimado;
   DateTime dataProximoConcurso;
 
-  LotofacilModel({
+  LotomaniaModel({
     this.concurso,
     this.data,
     this.resultado,
@@ -19,13 +19,13 @@ class LotofacilModel {
     this.dataProximoConcurso,
   });
 
-  LotofacilModel.fromJson(Map<String, dynamic> json)
-      : this.concurso = json['nu_concurso'].toString(),
-        this.data = CustomFormatDate().instance.parse(json['dt_apuracaoStr']),
+  LotomaniaModel.fromJson(Map<String, dynamic> json)
+      : this.concurso = json['concurso'].toString(),
+        this.data = CustomFormatDate().instance.parse(json['dtApuracaoStr']),
         this.resultado = json['resultadoOrdenado'],
-        this.nrGanhadores = json['qt_ganhador_faixa1'],
-        this.premioFaixa1 = json['vr_rateio_faixa1'].toString(),
-        this.premioEstimado = json['vrEstimativa'],
+        this.nrGanhadores = json['qtGanhadoresFaixa1'],
+        this.premioFaixa1 = json['vrRateioFaixa1'].toString(),
+        this.premioEstimado = json['vrEstimativa'].toString(),
         this.dataProximoConcurso = CustomFormatDate().instance.parse(json['dtProximoConcursoStr'])
         ;
 
@@ -38,9 +38,4 @@ class LotofacilModel {
         'premioEstimado': this.premioEstimado,
         'dataProximoConcurso': this.dataProximoConcurso,
       };
-
-  List<String> winningNumbersToList() {
-    var resultadoList = resultado.split('-');
-    return resultadoList;
-  }
 }

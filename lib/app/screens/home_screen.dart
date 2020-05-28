@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:lotery_flutter/stores/home_stores/lotteries_store.dart';
-import 'package:lotery_flutter/widgets/home_widgets/content_widget.dart';
-import 'package:lotery_flutter/widgets/home_widgets/header_widget.dart';
+import 'home/components/content_widget.dart';
+import 'home/components/header_widget.dart';
+import 'home/stores/lotteries_store.dart';
 
 class HomeScreen extends StatelessWidget {
   final LotteriesStore store = LotteriesStore();

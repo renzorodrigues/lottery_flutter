@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:lotery_flutter/models/lottery_type_enum.dart';
-import 'package:lotery_flutter/models/megasena_model.dart';
-import 'package:lotery_flutter/stores/home_stores/lotteries_store.dart';
-import 'package:lotery_flutter/utils/util.dart';
+import 'package:lotery_flutter/app/models/lottery_type_enum.dart';
+import 'package:lotery_flutter/app/models/megasena_model.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/utils/util.dart';
 import 'lottery_expansion_widget.dart';
 
 class ContentWidget extends StatelessWidget {

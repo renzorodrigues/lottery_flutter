@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:lotery_flutter/stores/home_stores/lotteries_store.dart';
-import 'package:lotery_flutter/utils/util.dart';
-import 'package:lotery_flutter/widgets/home_widgets/winning_number_widget.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/utils/util.dart';
+import 'winning_number_widget.dart';
 
 class DefaultResultWidget extends StatelessWidget {
   final List<String> lotteryNumbers;

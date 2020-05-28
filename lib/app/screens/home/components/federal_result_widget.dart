@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lotery_flutter/models/federal_model.dart';
 
 class FederalResultWidget extends StatelessWidget {
   final String contestNumber;

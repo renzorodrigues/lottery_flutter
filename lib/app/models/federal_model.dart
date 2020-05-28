@@ -1,4 +1,4 @@
-import 'package:lotery_flutter/utils/customFormatDate.dart';
+import 'package:lotery_flutter/app/utils/customFormatDate.dart';
 
 class FederalModel {
   String concurso;

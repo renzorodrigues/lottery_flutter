@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:lotery_flutter/models/duplasena_model.dart';
-import 'package:lotery_flutter/models/federal_model.dart';
-import 'package:lotery_flutter/models/lotofacil_model.dart';
-import 'package:lotery_flutter/models/lotomania_model.dart';
-import 'package:lotery_flutter/models/megasena_model.dart';
-import 'package:lotery_flutter/models/quina_model.dart';
-import 'package:lotery_flutter/models/timemania_model.dart';
+import 'package:lotery_flutter/app/models/duplasena_model.dart';
+import 'package:lotery_flutter/app/models/federal_model.dart';
+import 'package:lotery_flutter/app/models/lotofacil_model.dart';
+import 'package:lotery_flutter/app/models/lotomania_model.dart';
+import 'package:lotery_flutter/app/models/megasena_model.dart';
+import 'package:lotery_flutter/app/models/quina_model.dart';
+import 'package:lotery_flutter/app/models/timemania_model.dart';
 
 class LotteryController {
   Future<MegasenaModel> getMegasena() async {

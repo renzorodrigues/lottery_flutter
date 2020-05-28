@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lotery_flutter/widgets/home_widgets/winning_number_widget.dart';
+
+import 'winning_number_widget.dart';
 
 class DuplaSenaResultWidget extends StatelessWidget {
   final List<String> firstWinningNumbers;
