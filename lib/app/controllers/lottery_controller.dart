@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:lotery_flutter/app/models/diadesorte_model.dart';
 import 'package:lotery_flutter/app/models/duplasena_model.dart';
 import 'package:lotery_flutter/app/models/federal_model.dart';
 import 'package:lotery_flutter/app/models/lotofacil_model.dart';
@@ -74,6 +75,16 @@ class LotteryController {
       var response = await http.get("https://lottery-renzo.herokuapp.com/federal/");
       var decodeJson = jsonDecode(response.body);
       return FederalModel.fromJson(decodeJson);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  Future<DiadesorteModel> getDiadesorte() async {
+    try {
+      var response = await http.get("https://lottery-renzo.herokuapp.com/diadesorte/");
+      var decodeJson = jsonDecode(response.body);
+      return DiadesorteModel.fromJson(decodeJson);
     } catch (e) {
       return null;
     }

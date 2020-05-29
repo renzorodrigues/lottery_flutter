@@ -1,4 +1,5 @@
 import 'package:lotery_flutter/app/controllers/lottery_controller.dart';
+import 'package:lotery_flutter/app/models/diadesorte_model.dart';
 import 'package:lotery_flutter/app/models/duplasena_model.dart';
 import 'package:lotery_flutter/app/models/federal_model.dart';
 import 'package:lotery_flutter/app/models/lotofacil_model.dart';
@@ -36,8 +37,11 @@ abstract class _LotteriesStoreBase with Store {
   @observable
   FederalModel federalModel;
 
+  @observable
+  DiadesorteModel diadesorteModel;
+
   @action
-  fetchMegasena() {
+  void fetchMegasena() {
     megasenaModel = null;
     controller.getMegasena().then((res) {
       megasenaModel = res;
@@ -45,7 +49,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchLotofacil() {
+  void fetchLotofacil() {
     lotofacilModel = null;
     controller.getLotofacil().then((res) {
       lotofacilModel = res;
@@ -53,7 +57,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchQuina() {
+  void fetchQuina() {
     quinaModel = null;
     controller.getQuina().then((res) {
       quinaModel = res;
@@ -61,7 +65,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchLotomania() {
+  void fetchLotomania() {
     lotomaniaModel = null;
     controller.getLotomania().then((res) {
       lotomaniaModel = res;
@@ -69,7 +73,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchTimemania() {
+  void fetchTimemania() {
     timemaniaModel = null;
     controller.getTimemania().then((res) {
       timemaniaModel = res;
@@ -77,7 +81,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchDuplasena() {
+  void fetchDuplasena() {
     duplasenaModel = null;
     controller.getDuplasena().then((res) {
       duplasenaModel = res;
@@ -85,7 +89,7 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchFederal() {
+  void fetchFederal() {
     federalModel = null;
     controller.getFederal().then((res) {
       federalModel = res;
@@ -93,7 +97,15 @@ abstract class _LotteriesStoreBase with Store {
   }
 
   @action
-  fetchLotteries() {
+  void fetchDiadesorte() {
+    diadesorteModel = null;
+    controller.getDiadesorte().then((res) {
+      diadesorteModel = res;
+    });
+  }
+
+  @action
+  void fetchLotteries() {
     fetchMegasena();
     fetchLotofacil();
     fetchQuina();
@@ -101,6 +113,7 @@ abstract class _LotteriesStoreBase with Store {
     fetchTimemania();
     fetchDuplasena();
     fetchFederal();
+    fetchDiadesorte();
   }
 
   @computed 
@@ -111,5 +124,6 @@ abstract class _LotteriesStoreBase with Store {
                 lotomaniaModel != null &&
                 timemaniaModel != null &&
                 duplasenaModel != null &&
-                federalModel != null;
+                federalModel != null &&
+                diadesorteModel != null;
 }

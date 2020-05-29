@@ -6,7 +6,6 @@ class HeaderWidget extends StatelessWidget {
     return Container(
       height: 130,
       width: double.infinity,
-      margin: EdgeInsets.all(10),
       child: Card(
         elevation: 5,
         child: Row(
@@ -18,10 +17,10 @@ class HeaderWidget extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.blue[100],
+                color: Colors.green[100],
               ),
               child: FlutterLogo(
-                colors: Colors.blue,
+                colors: Colors.green,
                 size: 50,
               ),
             ),
@@ -31,10 +30,10 @@ class HeaderWidget extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.blue[100],
+                color: Colors.green[100],
               ),
               child: FlutterLogo(
-                colors: Colors.blue,
+                colors: Colors.green,
                 size: 50,
               ),
             ),
@@ -44,10 +43,10 @@ class HeaderWidget extends StatelessWidget {
               height: 80,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.blue[100],
+                color: Colors.green[100],
               ),
               child: FlutterLogo(
-                colors: Colors.blue,
+                colors: Colors.green,
                 size: 50,
               ),
             ),

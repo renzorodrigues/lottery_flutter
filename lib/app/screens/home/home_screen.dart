@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'home/components/content_widget.dart';
-import 'home/components/header_widget.dart';
-import 'home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/screens/home/components/content_widget.dart';
+import 'package:lotery_flutter/app/screens/home/components/header_widget.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final LotteriesStore store = LotteriesStore();
+
+  @override
+  void initState() { 
+    super.initState();
+    store.fetchLotteries();
+  }
+
   @override
   Widget build(BuildContext context) {
-    store.fetchLotteries();
     return Scaffold(
       appBar: AppBar(
         title: Text('App'),
@@ -35,14 +46,20 @@ class HomeScreen extends StatelessWidget {
               HeaderWidget(),
               Container(
                 alignment: Alignment.centerRight,
-                padding: EdgeInsets.only(bottom: 5, right: 15),
+                padding: EdgeInsets.only(top: 10, bottom: 5, right: 10),
                 child: Text('ÚLTIMOS RESULTADOS'),
               ),
               Observer(
                 builder: (_) {
                   return store.isAllLoaded
                       ? ContentWidget(store)
-                      : Container(child: SpinKitCircle(color: Colors.green));
+                      : Container(
+                          margin: EdgeInsets.only(top: 100),
+                          child: SpinKitFadingCircle(
+                            size: 100,
+                            color: Colors.green,
+                          ),
+                        );
                 },
               )
             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lotery_flutter/app/screens/home/components/megasena_screen.dart';
+import 'package:lotery_flutter/app/screens/lotteries/megasena_screen.dart';
 
 class LotteryRoute {
   Future<void> nextPage(BuildContext context, String lotteryName) async {

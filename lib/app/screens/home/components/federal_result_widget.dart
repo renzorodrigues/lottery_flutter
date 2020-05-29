@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
 
 class FederalResultWidget extends StatelessWidget {
-  final String contestNumber;
-  final DateTime contasteDate;
   final List<Map<String, dynamic>> federalList;
+  final Color blue1 = Colors.indigo[200];
+  final Color blue2 = Colors.indigo[300];
 
   FederalResultWidget({
-    this.contestNumber,
-    this.contasteDate,
     this.federalList = const [],
   });
-
-  int _checkIndex(){
-    if (key == 'premio1'){
-      return 1;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,52 +55,207 @@ class FederalResultWidget extends StatelessWidget {
               ),
             ],
           ),
-          ...federalList.map((premio) {
-            var color = Colors.white10;
-            return Wrap(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(5),
-                  width: 80,
-                  color: color,
-                  child: Text(
-                    '1º',
-                    //'${premio.destino.toString()}º',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
-                    ),
+          Wrap(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 80,
+                color: this.blue1,
+                child: Text(
+                  '1º',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  width: 100,
-                  color: color,
-                  child: Text(
-                    'bilhete',
-                    //premio.bilhete,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
-                    ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 100,
+                color: this.blue1,
+                child: Text(
+                  federalList[0]['premio1'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  width: 120,
-                  color: color,
-                  child: Text(
-                    'valor premio',
-                    //premio.valorPremio.toStringAsFixed(2),
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 18,
-                    ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 120,
+                color: this.blue1,
+                child: Text(
+                  federalList[0]['valor'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
                   ),
                 ),
-              ],
-            );
-          })
+              ),
+            ],
+          ),
+          Wrap(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 80,
+                color: this.blue2,
+                child: Text(
+                  '2º',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 100,
+                color: this.blue2,
+                child: Text(
+                  federalList[1]['premio2'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 120,
+                color: this.blue2,
+                child: Text(
+                  federalList[1]['valor'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Wrap(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 80,
+                color: this.blue1,
+                child: Text(
+                  '3º',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 100,
+                color: this.blue1,
+                child: Text(
+                  federalList[2]['premio3'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 120,
+                color: this.blue1,
+                child: Text(
+                  federalList[2]['valor'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Wrap(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 80,
+                color: this.blue2,
+                child: Text(
+                  '4º',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 100,
+                color: this.blue2,
+                child: Text(
+                  federalList[3]['premio4'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 120,
+                color: this.blue2,
+                child: Text(
+                  federalList[3]['valor'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Wrap(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 80,
+                color: this.blue1,
+                child: Text(
+                  '5º',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 100,
+                color: this.blue1,
+                child: Text(
+                  federalList[4]['premio5'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                width: 120,
+                color: this.blue1,
+                child: Text(
+                  federalList[4]['valor'].toString(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          // })
         ],
       ),
     );

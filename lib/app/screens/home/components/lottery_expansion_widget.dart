@@ -40,10 +40,10 @@ class LotteryExpansionWidget extends StatelessWidget {
     this.height,
     this.lotteryIcon,
     this.lotteryName,
-    this.contestNumber,
-    this.winnersNumbers,
-    this.award,
-    this.nextEstimate,
+    this.contestNumber = '',
+    this.winnersNumbers = 0,
+    this.award = '',
+    this.nextEstimate = '',
     this.backgroundColor = Colors.grey,
     this.color = Colors.grey,
     this.lotteryNumbers = const [],
@@ -53,9 +53,10 @@ class LotteryExpansionWidget extends StatelessWidget {
     this.defaultLottery = true,
     this.lotteryType,
     this.federalList,
-    this.date,
-    this.nextContestDate,
-  });
+    DateTime date,
+    DateTime nextContestDate,
+  })  : date = date ?? DateTime.now(),
+        nextContestDate = nextContestDate ?? DateTime.now();
 
   Widget _lotteryType(LotteryTypeEnum lotteryType) {
     switch (lotteryType.toString()) {
@@ -216,6 +217,7 @@ class LotteryExpansionWidget extends StatelessWidget {
                           ),
                         ]),
                       ),
+                      this.nextEstimate != '' ?
                       Container(
                         width: double.infinity,
                         color: Colors.white54,
@@ -234,8 +236,10 @@ class LotteryExpansionWidget extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(left: 2),
                             child: Text(
-                              this.nextContestDate != null ? DateFormat('dd/MM/yyyy')
-                                  .format(this.nextContestDate) : DateTime.now().toString(),
+                              this.nextContestDate != null
+                                  ? DateFormat('dd/MM/yyyy')
+                                      .format(this.nextContestDate)
+                                  : DateTime.now().toString(),
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
@@ -244,7 +248,8 @@ class LotteryExpansionWidget extends StatelessWidget {
                             ),
                           ),
                         ]),
-                      ),
+                      ) : Container(),
+                      this.nextEstimate != '' ?
                       Container(
                         width: double.infinity,
                         color: Colors.white54,
@@ -272,7 +277,7 @@ class LotteryExpansionWidget extends StatelessWidget {
                             ),
                           ),
                         ]),
-                      ),
+                      ) : Container(),
                       Container(
                           width: double.infinity,
                           margin: EdgeInsets.all(10),
@@ -290,7 +295,7 @@ class LotteryExpansionWidget extends StatelessWidget {
                               ),
                             ),
                             color: this.color,
-                          )),
+                          ),),
                     ],
                   ),
                 ),

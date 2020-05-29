@@ -134,11 +134,29 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
     }, _$federalModelAtom, name: '${_$federalModelAtom.name}_set');
   }
 
+  final _$diadesorteModelAtom =
+      Atom(name: '_LotteriesStoreBase.diadesorteModel');
+
+  @override
+  DiadesorteModel get diadesorteModel {
+    _$diadesorteModelAtom.context.enforceReadPolicy(_$diadesorteModelAtom);
+    _$diadesorteModelAtom.reportObserved();
+    return super.diadesorteModel;
+  }
+
+  @override
+  set diadesorteModel(DiadesorteModel value) {
+    _$diadesorteModelAtom.context.conditionallyRunInAction(() {
+      super.diadesorteModel = value;
+      _$diadesorteModelAtom.reportChanged();
+    }, _$diadesorteModelAtom, name: '${_$diadesorteModelAtom.name}_set');
+  }
+
   final _$_LotteriesStoreBaseActionController =
       ActionController(name: '_LotteriesStoreBase');
 
   @override
-  dynamic fetchMegasena() {
+  void fetchMegasena() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchMegasena();
@@ -148,7 +166,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchLotofacil() {
+  void fetchLotofacil() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchLotofacil();
@@ -158,7 +176,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchQuina() {
+  void fetchQuina() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchQuina();
@@ -168,7 +186,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchLotomania() {
+  void fetchLotomania() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchLotomania();
@@ -178,7 +196,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchTimemania() {
+  void fetchTimemania() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchTimemania();
@@ -188,7 +206,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchDuplasena() {
+  void fetchDuplasena() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchDuplasena();
@@ -198,7 +216,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchFederal() {
+  void fetchFederal() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchFederal();
@@ -208,7 +226,17 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   }
 
   @override
-  dynamic fetchLotteries() {
+  void fetchDiadesorte() {
+    final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
+    try {
+      return super.fetchDiadesorte();
+    } finally {
+      _$_LotteriesStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void fetchLotteries() {
     final _$actionInfo = _$_LotteriesStoreBaseActionController.startAction();
     try {
       return super.fetchLotteries();
@@ -220,7 +248,7 @@ mixin _$LotteriesStore on _LotteriesStoreBase, Store {
   @override
   String toString() {
     final string =
-        'megasenaModel: ${megasenaModel.toString()},lotofacilModel: ${lotofacilModel.toString()},quinaModel: ${quinaModel.toString()},lotomaniaModel: ${lotomaniaModel.toString()},timemaniaModel: ${timemaniaModel.toString()},duplasenaModel: ${duplasenaModel.toString()},federalModel: ${federalModel.toString()},isAllLoaded: ${isAllLoaded.toString()}';
+        'megasenaModel: ${megasenaModel.toString()},lotofacilModel: ${lotofacilModel.toString()},quinaModel: ${quinaModel.toString()},lotomaniaModel: ${lotomaniaModel.toString()},timemaniaModel: ${timemaniaModel.toString()},duplasenaModel: ${duplasenaModel.toString()},federalModel: ${federalModel.toString()},diadesorteModel: ${diadesorteModel.toString()},isAllLoaded: ${isAllLoaded.toString()}';
     return '{$string}';
   }
 }

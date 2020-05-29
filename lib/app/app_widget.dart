@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'package:lotery_flutter/app/screens/home/home_screen.dart';
 
 class AppWidget extends StatelessWidget {
   // This widget is the root of your application.

@@ -31,7 +31,7 @@ class Util {
 
   String currencyFormat(String value) {
 
-    if (value == null){
+    if (value == null || value.isEmpty){
       return '';
     }
 
