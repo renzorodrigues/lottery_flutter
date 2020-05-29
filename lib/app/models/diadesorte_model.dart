@@ -4,6 +4,7 @@ class DiadesorteModel {
   String concurso;
   DateTime data;
   String resultado;
+  int mes;
   int nrGanhadores;
   String premioFaixa1;
   String premioEstimado;
@@ -13,6 +14,7 @@ class DiadesorteModel {
     this.concurso,
     this.data,
     this.resultado,
+    this.mes,
     this.nrGanhadores,
     this.premioFaixa1,
     this.premioEstimado,
@@ -23,6 +25,7 @@ class DiadesorteModel {
       : this.concurso = json['nu_CONCURSO'].toString(),
         this.data = CustomFormatDate().instance.parse(json['dt_APURACAOStr']),
         this.resultado = json['resultadoOrdenado'],
+        this.mes = json['mes_DE_SORTE'],
         this.nrGanhadores = int.tryParse(json['qt_GANHADOR_FAIXA_1']),
         this.premioFaixa1 = json['vr_RATEIO_FAIXA_1'].toString(),
         this.premioEstimado = json['vr_ESTIMATIVA'].toString(),
@@ -33,6 +36,7 @@ class DiadesorteModel {
         'concurso': this.concurso,
         'data': this.data,
         'resultado': this.resultado,
+        'mes': this.mes,
         'nrGanhadores': this.nrGanhadores,
         'premioFaixa1': this.premioFaixa1,
         'premioEstimado': this.premioEstimado,

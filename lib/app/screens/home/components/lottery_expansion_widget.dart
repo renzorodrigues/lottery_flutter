@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lotery_flutter/app/models/lottery_type_enum.dart';
 import 'package:lotery_flutter/app/routes/lottery_route.dart';
 import 'package:lotery_flutter/app/screens/home/stores/home_store.dart';
-import 'package:lotery_flutter/app/screens/lotteries/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
 import 'package:lotery_flutter/app/utils/util.dart';
 import 'default_result_widget.dart';
 import 'duplasena_result_widget.dart';
@@ -21,6 +21,7 @@ class LotteryExpansionWidget extends StatelessWidget {
   final String lotteryName;
   final String contestNumber;
   final int winnersNumbers;
+  final String month;
   final String award;
   final String nextEstimate;
   final Color backgroundColor;
@@ -42,6 +43,7 @@ class LotteryExpansionWidget extends StatelessWidget {
     this.lotteryName,
     this.contestNumber = '',
     this.winnersNumbers = 0,
+    this.month = '',
     this.award = '',
     this.nextEstimate = '',
     this.backgroundColor = Colors.grey,
@@ -141,6 +143,23 @@ class LotteryExpansionWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      this.month == ''
+                          ? Container()
+                          : Container(
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.only(bottom: 5, left: 20),
+                              width: double.infinity,
+                              child: Text(
+                                'MÊS DE SORTE: ${this.month}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                    color: this.color),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
                       this.lotteryType.toString() != 'LotteryTypeEnum.federal'
                           ? Container(
                               width: double.infinity,
@@ -217,85 +236,89 @@ class LotteryExpansionWidget extends StatelessWidget {
                           ),
                         ]),
                       ),
-                      this.nextEstimate != '' ?
+                      this.nextEstimate != ''
+                          ? Container(
+                              width: double.infinity,
+                              color: Colors.white54,
+                              padding: EdgeInsets.all(3),
+                              margin:
+                                  EdgeInsets.only(top: 5, left: 5, right: 5),
+                              child: Row(children: <Widget>[
+                                Container(
+                                  child: Text(
+                                    'PRÓXIMO SORTEIO:',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(left: 2),
+                                  child: Text(
+                                    this.nextContestDate != null
+                                        ? DateFormat('dd/MM/yyyy')
+                                            .format(this.nextContestDate)
+                                        : DateTime.now().toString(),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ]),
+                            )
+                          : Container(),
+                      this.nextEstimate != ''
+                          ? Container(
+                              width: double.infinity,
+                              color: Colors.white54,
+                              padding: EdgeInsets.all(3),
+                              margin: EdgeInsets.only(left: 5, right: 5),
+                              child: Row(children: <Widget>[
+                                Container(
+                                  child: Text(
+                                    'PRÊMIO ESTIMADO:',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(left: 2),
+                                  child: Text(
+                                    util.currencyFormat(this.nextEstimate),
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ]),
+                            )
+                          : Container(),
                       Container(
                         width: double.infinity,
-                        color: Colors.white54,
-                        padding: EdgeInsets.all(3),
-                        margin: EdgeInsets.only(top: 5, left: 5, right: 5),
-                        child: Row(children: <Widget>[
-                          Container(
-                            child: Text(
-                              'PRÓXIMO SORTEIO:',
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                              textAlign: TextAlign.center,
+                        margin: EdgeInsets.all(10),
+                        height: 30,
+                        child: RaisedButton(
+                          onPressed: () {
+                            route.nextPage(context, this.lotteryName);
+                          },
+                          child: Text(
+                            'CONFIRA O RESULTADO',
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
                             ),
                           ),
-                          Container(
-                            padding: EdgeInsets.only(left: 2),
-                            child: Text(
-                              this.nextContestDate != null
-                                  ? DateFormat('dd/MM/yyyy')
-                                      .format(this.nextContestDate)
-                                  : DateTime.now().toString(),
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ]),
-                      ) : Container(),
-                      this.nextEstimate != '' ?
-                      Container(
-                        width: double.infinity,
-                        color: Colors.white54,
-                        padding: EdgeInsets.all(3),
-                        margin: EdgeInsets.only(left: 5, right: 5),
-                        child: Row(children: <Widget>[
-                          Container(
-                            child: Text(
-                              'PRÊMIO ESTIMADO:',
-                              style: TextStyle(
-                                fontSize: 15,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(left: 2),
-                            child: Text(
-                              util.currencyFormat(this.nextEstimate),
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ]),
-                      ) : Container(),
-                      Container(
-                          width: double.infinity,
-                          margin: EdgeInsets.all(10),
-                          height: 30,
-                          child: RaisedButton(
-                            onPressed: () {
-                              route.nextPage(context, this.lotteryName);
-                            },
-                            child: Text(
-                              'CONFIRA O RESULTADO',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                            color: this.color,
-                          ),),
+                          color: this.color,
+                        ),
+                      ),
                     ],
                   ),
                 ),

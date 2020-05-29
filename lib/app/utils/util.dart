@@ -30,15 +30,14 @@ class Util {
   }
 
   String currencyFormat(String value) {
-
-    if (value == null || value.isEmpty){
+    if (value == null || value.isEmpty) {
       return '';
     }
 
     var formattedValue = '';
     var splitted = value.split('');
 
-    if (splitted.contains(',')){
+    if (splitted.contains(',')) {
       return 'R\$$value';
     }
 
@@ -49,10 +48,51 @@ class Util {
       formattedValue = StringUtils.reverse(value);
     }
 
-    formattedValue = StringUtils.addCharAtPosition(formattedValue, '.', 3, repeat: true);
+    formattedValue =
+        StringUtils.addCharAtPosition(formattedValue, '.', 3, repeat: true);
     formattedValue = StringUtils.reverse(formattedValue);
     formattedValue = 'R\$$formattedValue,00';
 
     return formattedValue;
+  }
+
+  String toMonthString(int month) {
+    switch (month) {
+      case 1:
+        return 'JANEIRO';
+        break;
+      case 2:
+        return 'FEVEREIRO';
+        break;
+      case 3:
+        return 'MARÇO';
+        break;
+      case 4:
+        return 'ABRIL';
+        break;
+      case 5:
+        return 'MAIO';
+        break;
+      case 6:
+        return 'JUNHO';
+        break;
+      case 7:
+        return 'JULHO';
+        break;
+      case 8:
+        return 'AGOSTO';
+        break;
+      case 9:
+        return 'SETEMBRO';
+        break;
+      case 10:
+        return 'OUTUBRO';
+        break;
+      case 11:
+        return 'NOVEMBRO';
+        break;
+      default:
+        return 'DEZEMBRO';
+    }
   }
 }

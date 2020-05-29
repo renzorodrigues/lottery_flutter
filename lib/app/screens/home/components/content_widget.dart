@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lotery_flutter/app/models/lottery_type_enum.dart';
-import 'package:lotery_flutter/app/screens/lotteries/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
 import 'package:lotery_flutter/app/utils/util.dart';
 import 'lottery_expansion_widget.dart';
 
@@ -231,10 +231,12 @@ class ContentWidget extends StatelessWidget {
               ),
               LotteryExpansionWidget(
                 store: store,
+                height: 318,
                 lotteryIcon: 'assets/images/diadesorte.png',
                 lotteryName: 'DIA DE SORTE',
                 contestNumber: store.diadesorteModel.concurso,
                 winnersNumbers: store.diadesorteModel.nrGanhadores,
+                month: util.toMonthString(store.diadesorteModel.mes),
                 nextEstimate: store.diadesorteModel.premioEstimado,
                 backgroundColor: Colors.lime[100],
                 color: Colors.lime[700],
