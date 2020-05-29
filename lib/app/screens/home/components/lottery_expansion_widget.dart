@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lotery_flutter/app/models/lottery_type_enum.dart';
 import 'package:lotery_flutter/app/routes/lottery_route.dart';
 import 'package:lotery_flutter/app/screens/home/stores/home_store.dart';
-import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/screens/lotteries/stores/lotteries_store.dart';
 import 'package:lotery_flutter/app/utils/util.dart';
 import 'default_result_widget.dart';
 import 'duplasena_result_widget.dart';

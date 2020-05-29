@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:lotery_flutter/app/screens/home/components/content_widget.dart';
 import 'package:lotery_flutter/app/screens/home/components/header_widget.dart';
-import 'package:lotery_flutter/app/screens/home/stores/lotteries_store.dart';
+import 'package:lotery_flutter/app/screens/lotteries/stores/lotteries_store.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
